@@ -15,8 +15,8 @@ export default function StudentForm({ initialData = {}, onSubmit, loading }) {
   })
   const [imageFile, setImageFile]     = useState(null)
   const [imagePreview, setImagePreview] = useState(
-    initialData.image ? `${BASE_URL}/upload/${initialData.image}` : null
-  )
+    initialData.image ? initialData.image : null
+)
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -26,9 +26,9 @@ export default function StudentForm({ initialData = {}, onSubmit, loading }) {
     const file = e.target.files[0]
     if (file) {
       setImageFile(file)
-      setImagePreview(initialData.image || null)
+      setImagePreview(URL.createObjectURL(file)) 
     }
-  }
+}
 
   const handleSubmit = (e) => {
     e.preventDefault()
