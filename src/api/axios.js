@@ -1,10 +1,13 @@
 import axios from 'axios'
 
 const API = axios.create({
-  baseURL: 'http://https://student-regis-frontend.leangseakkong.workers.dev/api'
+  baseURL: 'https://student-registration-4zn2.onrender.com/api',
+  timeout: 30000
 })
-export const BASE_URL = 'http://localhost:8000'  // ✅ must be exported!
-// Attach token to every request automatically
+
+export const BASE_URL = 'https://student-registration-4zn2.onrender.com'
+
+// Attach token to every request
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem('token')
   if (token) {
