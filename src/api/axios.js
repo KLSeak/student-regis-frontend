@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const API = axios.create({
-  baseURL: 'http://localhost:8000/api'
+  baseURL: 'http://https://student-regis-frontend.leangseakkong.workers.dev/api'
 })
 export const BASE_URL = 'http://localhost:8000'  // ✅ must be exported!
 // Attach token to every request automatically

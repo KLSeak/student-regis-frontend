@@ -3,7 +3,8 @@ import { createContext, useContext, useState } from 'react'
 const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(localStorage.getItem('token') || null)
+  // Make sure you're reading token correctly
+const [token, setToken] = useState(localStorage.getItem('token') || null)
 
   const login = (token) => {
     localStorage.setItem('token', token)
