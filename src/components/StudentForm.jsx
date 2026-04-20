@@ -5,18 +5,18 @@ import { BASE_URL } from '../api/axios'
 export default function StudentForm({ initialData = {}, onSubmit, loading }) {
   const navigate = useNavigate()
   const [form, setForm] = useState({
-    fullName:    initialData.fullName    || '',
-    dob:         initialData.dob         || '',
-    gender:      initialData.gender      || '',
-    email:       initialData.email       || '',
+    fullName: initialData.fullName || '',
+    dob: initialData.dob || '',
+    gender: initialData.gender || '',
+    email: initialData.email || '',
     phoneNumber: initialData.phoneNumber || '',
-    address:     initialData.address     || '',
-    grade:       initialData.grade       || '',
+    address: initialData.address || '',
+    grade: initialData.grade || '',
   })
-  const [imageFile, setImageFile]     = useState(null)
+  const [imageFile, setImageFile] = useState(null)
   const [imagePreview, setImagePreview] = useState(
     initialData.image ? initialData.image : null
-)
+  )
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -24,11 +24,14 @@ export default function StudentForm({ initialData = {}, onSubmit, loading }) {
 
   const handleImage = (e) => {
     const file = e.target.files[0]
+    console.log('Selected file:', file)  // ✅ add this
     if (file) {
       setImageFile(file)
-      setImagePreview(URL.createObjectURL(file)) 
+      const preview = URL.createObjectURL(file)
+      console.log('Preview URL:', preview)  // ✅ add this
+      setImagePreview(preview)
     }
-}
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -42,7 +45,13 @@ export default function StudentForm({ initialData = {}, onSubmit, loading }) {
       <div className="flex flex-col items-center gap-3">
         <div className="w-24 h-24 rounded-full overflow-hidden bg-gray-100 border border-gray-200">
           {imagePreview ? (
-            <img src={imagePreview} alt="preview" className="w-full h-full object-cover" />
+            <img
+              src={imagePreview}
+              alt="preview"
+              className="w-full h-full object-cover"
+              onLoad={() => console.log('Image loaded ✅')}        
+              onError={(e) => console.log('Image error ❌', e)}   
+            />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-gray-300 text-sm">
               No Image
