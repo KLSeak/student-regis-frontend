@@ -19,7 +19,7 @@ export default function AddStudent() {
         const formData = new FormData()
         formData.append('file', imageFile)
         const uploadRes = await API.post('/upload', formData)
-        imageName = uploadRes.data.filename  // ✅ matches controller response
+        imageName = uploadRes.data.filename
     }
     
     await API.post('/student', { ...form, image: imageName })

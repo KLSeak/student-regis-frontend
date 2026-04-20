@@ -99,7 +99,7 @@ export default function Dashboard() {
                         <td className="px-4 py-3 text-gray-400">{i + 1}</td>
                         <td className="px-4 py-3">
                           <img
-                            src={`http://localhost:8000/upload/${s.image}`}
+                            src={s.image}
                             alt={s.fullName}
                             className="w-9 h-9 rounded-full object-cover bg-gray-100"
                             onError={(e) => e.target.src = '/default-avatar.png'}

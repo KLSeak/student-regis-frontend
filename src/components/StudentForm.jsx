@@ -26,7 +26,7 @@ export default function StudentForm({ initialData = {}, onSubmit, loading }) {
     const file = e.target.files[0]
     if (file) {
       setImageFile(file)
-      setImagePreview(URL.createObjectURL(file))
+      setImagePreview(initialData.image || null)
     }
   }
 
