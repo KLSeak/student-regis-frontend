@@ -24,11 +24,11 @@ export default function StudentForm({ initialData = {}, onSubmit, loading }) {
 
   const handleImage = (e) => {
     const file = e.target.files[0]
-    console.log('Selected file:', file)  // ✅ add this
+    console.log('Selected file:', file)
     if (file) {
       setImageFile(file)
       const preview = URL.createObjectURL(file)
-      console.log('Preview URL:', preview)  // ✅ add this
+      console.log('Preview URL:', preview)
       setImagePreview(preview)
     }
   }
@@ -150,14 +150,18 @@ export default function StudentForm({ initialData = {}, onSubmit, loading }) {
       {/* Grade */}
       <div>
         <label className="text-sm text-gray-600 mb-1 block">Grade</label>
-        <input
+        <select
           name="grade"
           value={form.grade}
           onChange={handleChange}
-          placeholder="e.g. 12"
           className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
           required
-        />
+        >
+          <option value="">Select grade</option>
+          {Array.from({ length: 12 }, (_, i) => i + 1).map((g) => (
+            <option key={g} value={g}>{g}</option>
+          ))}
+        </select>
       </div>
 
       {/* Buttons */}
