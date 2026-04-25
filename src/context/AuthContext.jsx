@@ -3,16 +3,16 @@ import { createContext, useContext, useState } from 'react'
 const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
-  // Make sure you're reading token correctly
-const [token, setToken] = useState(localStorage.getItem('token') || null)
+
+  const [token, setToken] = useState(sessionStorage.getItem('token') || null)
 
   const login = (token) => {
-    localStorage.setItem('token', token)
+    sessionStorage.setItem('token', token)
     setToken(token)
   }
 
   const logout = () => {
-    localStorage.removeItem('token')
+    sessionStorage.removeItem('token')
     setToken(null)
   }
 

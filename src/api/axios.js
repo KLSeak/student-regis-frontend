@@ -7,9 +7,9 @@ const API = axios.create({
 
 export const BASE_URL = 'https://student-registration-4zn2.onrender.com'
 
-// Attach token to every request
+// Change localStorage to sessionStorage
 API.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token') // 👈 change this
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
   }
