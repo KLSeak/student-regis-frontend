@@ -8,6 +8,7 @@ import EditStudent from './pages/EditStudent'
 
 const ProtectedRoute = ({ children }) => {
   const { token } = useAuth()
+  console.log("ProtectedRoute token:", token)
   return token ? children : <Navigate to="/login" />
 }
 

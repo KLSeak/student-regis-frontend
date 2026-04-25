@@ -49,8 +49,8 @@ export default function StudentForm({ initialData = {}, onSubmit, loading }) {
               src={imagePreview}
               alt="preview"
               className="w-full h-full object-cover"
-              onLoad={() => console.log('Image loaded ✅')}        
-              onError={(e) => console.log('Image error ❌', e)}   
+              onLoad={() => console.log('Image loaded ✅')}
+              onError={(e) => console.log('Image error ❌', e)}
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-gray-300 text-sm">

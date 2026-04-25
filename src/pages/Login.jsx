@@ -17,6 +17,7 @@ export default function Login() {
     setError('')
     try {
       const res = await API.post('/auth/login', { email, password })
+      // console.log('API response:', res.data)
       login(res.data.token)
       navigate('/dashboard')
     } catch (err) {
